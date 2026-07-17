@@ -27,7 +27,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await api.post("/api/auth/login", formData);
+      const res = await api.post("/auth/login", formData);
       const { token, user } = res.data;
       login(user, token);
       navigate("/");
@@ -41,9 +41,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-slate-950">
+    <div className="min-h-screen flex bg-gray-50 dark:bg-slate-950">
       {/* Left Section */}
-      <div className="hidden lg:flex w-1/2 flex-col justify-center px-16 text-white bg-gradient-to-br from-slate-950 to-slate-900">
+      <div className="hidden lg:flex w-1/2 flex-col justify-center px-16 text-slate-800 dark:text-white bg-white dark:bg-gradient-to-br from-slate-950 to-slate-900">
         <div className="flex items-center gap-3 mb-8">
           <div className="bg-emerald-500 p-3 rounded-xl">
             <FaCode size={24} />
@@ -58,7 +58,7 @@ const Login = () => {
           AI Code Review Assistant
         </h2>
 
-        <p className="text-gray-400 text-lg">
+        <p className="text-gray-500 dark:text-gray-400 text-lg">
           Get intelligent code reviews and
           improve your code quality with AI.
         </p>

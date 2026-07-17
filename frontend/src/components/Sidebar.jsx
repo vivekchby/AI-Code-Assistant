@@ -3,7 +3,6 @@ import {
   FaHistory,
   FaCode,
   FaSignOutAlt,
-  FaTimes,
 } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -43,8 +42,7 @@ const Sidebar = ({
           z-50
           w-72
           h-screen
-          self-start
-          bg-slate-900
+          bg-white dark:bg-slate-900
           text-white
           p-6
           flex
@@ -78,13 +76,12 @@ const Sidebar = ({
             onClick={() =>
               setSidebarOpen(false)
             }
-            className="
-              flex
+            className="flex
               items-center
               gap-3
               p-4
               rounded-xl
-              bg-teal-950/70
+              text-slate-700 dark:text-white bg-slate-100 dark:bg-teal-950/70
               border-b
               border-slate-800
               hover:bg-teal-800
@@ -96,17 +93,36 @@ const Sidebar = ({
           </Link>
 
           <Link
-            to="/history"
+            to="/review"
             onClick={() =>
               setSidebarOpen(false)
             }
-            className="
-              flex
+            className="flex
               items-center
               gap-3
               p-4
               rounded-xl
-              bg-teal-950/70
+              text-slate-700 dark:text-white bg-slate-100 dark:bg-teal-950/70
+              border-b
+              border-slate-800
+              hover:bg-teal-800
+              transition
+            "
+          >
+            <FaCode />
+            New Review
+          </Link>
+          <Link
+            to="/history"
+            onClick={() =>
+              setSidebarOpen(false)
+            }
+            className="flex
+              items-center
+              gap-3
+              p-4
+              rounded-xl
+              text-slate-700 dark:text-white bg-slate-100 dark:bg-teal-950/70
               border-b
               border-slate-800
               hover:bg-teal-800
@@ -121,17 +137,15 @@ const Sidebar = ({
         {/* Logout */}
         <button
           onClick={handleLogout}
-          className="
-            flex
+          className="flex
             items-center
             gap-3
             p-4
-            pt-5
             border-t
             border-slate-700
+            text-slate-700 dark:text-white
             rounded-xl
-            bg-teal-950/70
-            hover:bg-red-500
+            hover:bg-red-500 hover:text-white
             transition
           "
         >

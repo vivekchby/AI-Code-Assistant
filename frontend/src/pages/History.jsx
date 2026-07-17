@@ -28,7 +28,7 @@ const History = () => {
       setLoading(true);
 
       const res = await api.get(
-        `/api/reviews/history/${user.id}`
+        `/reviews/history/${user.id}`
       );
 
       setReviews(res.data.reviews || []);
@@ -48,7 +48,7 @@ const History = () => {
     if (!confirmDelete) return;
 
     try {
-      await api.delete(`/api/reviews/${id}`);
+      await api.delete(`/reviews/${id}`);
 
       setReviews((prev) =>
         prev.filter(

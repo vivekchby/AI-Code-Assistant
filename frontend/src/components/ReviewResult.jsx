@@ -611,7 +611,7 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-6"
+        className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6"
       >
         <div className="flex flex-col md:flex-row items-center gap-6">
           <ScoreRing score={score} />
@@ -668,11 +668,11 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-5"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <FaCode className="text-gray-400 dark:text-gray-500" size={14} />
-                  <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Most violated rules</h3>
+                  <FaCode className="text-gray-400" size={14} />
+                  <h3 className="text-sm font-semibold text-gray-700">Most violated rules</h3>
                 </div>
                 <div className="space-y-2.5">
                   {stats.topRules.map(([rule, data]) => {
@@ -682,8 +682,8 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                     return (
                       <div key={rule}>
                         <div className="flex items-center justify-between text-xs mb-1">
-                          <span className="font-mono text-gray-600 dark:text-gray-400 truncate max-w-[70%]">{rule}</span>
-                          <span className="font-semibold text-gray-500 dark:text-gray-400">{data.count}</span>
+                          <span className="font-mono text-gray-600 truncate max-w-[70%]">{rule}</span>
+                          <span className="font-semibold text-gray-500">{data.count}</span>
                         </div>
                         <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                           <div
@@ -703,11 +703,11 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 p-5"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5"
               >
                 <div className="flex items-center gap-2 mb-4">
-                  <FaHashtag className="text-gray-400 dark:text-gray-500" size={14} />
-                  <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-200">Issue density by line</h3>
+                  <FaHashtag className="text-gray-400" size={14} />
+                  <h3 className="text-sm font-semibold text-gray-700">Issue density by line</h3>
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {stats.lineEntries.map(([line, data]) => {
@@ -738,22 +738,22 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-700 overflow-hidden"
+            className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
           >
-            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-50 dark:border-slate-700">
-              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200">
-                <FaShieldAlt className="text-gray-400 dark:text-gray-500" size={13} />
+            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-50">
+              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                <FaShieldAlt className="text-gray-400" size={13} />
                 Issues
-                <span className="text-gray-400 dark:text-gray-500 font-normal">({filtered.length})</span>
+                <span className="text-gray-400 font-normal">({filtered.length})</span>
               </div>
               <div className="relative w-56">
-                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 dark:text-gray-500" size={12} />
+                <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" size={12} />
                 <input
                   type="text"
                   placeholder="Search issues..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full pl-8 pr-3 py-1.5 text-xs border border-gray-100 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-200 bg-gray-50 dark:bg-slate-700 dark:text-gray-200"
+                  className="w-full pl-8 pr-3 py-1.5 text-xs border border-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-200 bg-gray-50"
                 />
               </div>
             </div>
@@ -779,7 +779,7 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                     >
                       <button
                         onClick={() => toggleExpand(idx)}
-                        className={`w-full text-left px-5 py-3 flex items-start gap-3 transition-colors hover:bg-gray-50 dark:hover:bg-slate-700/50 border-b border-gray-50 dark:border-slate-700 last:border-0 ${sev.bg} ${isExpanded ? "bg-opacity-60" : "bg-opacity-0"}`}
+                        className={`w-full text-left px-5 py-3 flex items-start gap-3 transition-colors hover:bg-gray-50 border-b border-gray-50 last:border-0 ${sev.bg} ${isExpanded ? "bg-opacity-60" : "bg-opacity-0"}`}
                       >
                         <div className={`mt-0.5 w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 ${sev.badge}`}>
                           <Icon size={11} />
@@ -791,7 +791,7 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                             </p>
                             <FaChevronRight
                               size={10}
-                              className={`text-gray-300 dark:text-gray-500 mt-1 flex-shrink-0 transition-transform ${
+                              className={`text-gray-300 mt-1 flex-shrink-0 transition-transform ${
                                 isExpanded ? "rotate-90" : ""
                               }`}
                             />
@@ -823,10 +823,10 @@ const ReviewResult = ({ issues, aiReview, score, complexity }) => {
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            <div className="px-5 py-4 bg-gray-50 dark:bg-slate-900/70 border-b border-gray-100 dark:border-slate-700">
+                            <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
                               <div className="flex items-start gap-3">
-                                <FaFileAlt className="text-gray-300 dark:text-gray-500 mt-0.5" size={12} />
-                                <div className="text-xs text-gray-500 dark:text-gray-400 space-y-1.5">
+                                <FaFileAlt className="text-gray-300 mt-0.5" size={12} />
+                                <div className="text-xs text-gray-500 space-y-1.5">
                                   <div>
                                     <span className="font-medium text-gray-600">Rule: </span>
                                     <code className="font-mono text-gray-500 bg-white px-1.5 py-0.5 rounded border border-gray-100">

@@ -48,7 +48,7 @@ console.log("User ID:", user?.id);
       setLoading(true);
 
       const res = await api.post(
-        "/api/reviews/full-review",
+        "/reviews/full-review",
         {
           userId: user.id,
           language,
@@ -157,7 +157,7 @@ console.log("User ID:", user?.id);
       try {
         const res =
           await api.post(
-            "/api/reviews/upload",
+            "/reviews/upload",
             formData,
             {
               headers: {
@@ -338,25 +338,35 @@ console.log("User ID:", user?.id);
         </div>
 
         {/* Code Editors */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
-          <div>
-            <h2 className="mb-2 font-semibold text-gray-700 dark:text-gray-200">Your Code</h2>
-            <CodeEditor
-              code={code}
-              setCode={handleCodeChange}
-              language={language}
-            />
-          </div>
-          <div>
-            <h2 className="mb-2 font-semibold text-gray-700 dark:text-gray-200">Corrected Code</h2>
-            <CodeEditor
-              code={correctedCode || "// Corrected code will appear here after review."}
-              setCode={() => {}}
-              language={language}
-              readOnly
-            />
-          </div>
-        </div>
+<div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+  <div>
+    <h2 className="mb-3 text-lg font-bold text-gray-900">
+      Your Code
+    </h2>
+
+    <CodeEditor
+      code={code}
+      setCode={handleCodeChange}
+      language={language}
+    />
+  </div>
+
+  <div>
+    <h2 className="mb-3 text-lg font-bold text-gray-900">
+      Corrected Code
+    </h2>
+
+    <CodeEditor
+      code={
+        correctedCode ||
+        "// Corrected code will appear here after review."
+      }
+      setCode={() => {}}
+      language={language}
+      readOnly
+    />
+  </div>
+</div>
 
         {/* Button */}
         <button

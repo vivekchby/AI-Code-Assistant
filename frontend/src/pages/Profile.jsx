@@ -15,7 +15,7 @@ const Profile = () => {
     event.preventDefault();
     setSaving(true);
     try {
-      const response = await api.put("/api/auth/profile", form, {
+      const response = await api.put("/auth/profile", form, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       updateUser(response.data);
