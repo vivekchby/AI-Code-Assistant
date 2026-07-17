@@ -59,16 +59,6 @@ const Sidebar = ({
           }
         `}
       >
-        {/* Mobile Close Button */}
-        <button
-          className="md:hidden self-end mb-4"
-          onClick={() =>
-            setSidebarOpen(false)
-          }
-        >
-          <FaTimes size={24} />
-        </button>
-
         {/* Logo */}
         <div className="mb-4">
           <h1 className="text-3xl font-bold text-emerald-400">

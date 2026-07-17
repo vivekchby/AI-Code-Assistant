@@ -5,8 +5,8 @@ import {
 } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import DashboardLayout from "../layouts/DashboardLayout";
 import api from "../services/api";
-import Sidebar from "../components/Sidebar";
 import toast from "react-hot-toast";
 
 const History = () => {
@@ -72,11 +72,9 @@ const History = () => {
   );
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-
-      <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold mb-6">
+    <DashboardLayout>
+      <div>
+        <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
           Review History
         </h1>
 
@@ -87,7 +85,7 @@ const History = () => {
           onChange={(e) =>
             setSearch(e.target.value)
           }
-          className="w-full border rounded p-3 mb-6"
+          className="w-full border rounded p-3 mb-6 bg-white dark:bg-slate-800 dark:border-slate-700"
         />
 
         {loading ? (
@@ -95,7 +93,7 @@ const History = () => {
             <p>Loading reviews...</p>
           </div>
         ) : filteredReviews.length === 0 ? (
-          <div className="border rounded p-6 text-center">
+          <div className="border rounded p-6 text-center bg-white dark:bg-slate-800 dark:border-slate-700">
             No reviews found.
           </div>
         ) : (
@@ -156,7 +154,7 @@ const History = () => {
           ))
         )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 
