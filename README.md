@@ -203,9 +203,6 @@ Vivek Chaubey
 B.Tech CSE (Data Science)  
 Punjab Engineering College, Chandigarh
 
-GitHub: https://github.com/your-github-username
-
-LinkedIn: https://linkedin.com/in/your-linkedin-profile
 
 ---
 
