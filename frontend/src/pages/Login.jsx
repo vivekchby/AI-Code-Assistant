@@ -23,23 +23,28 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/login`;
-      const res = await api.post(apiUrl, formData);
-      const { token, user } = res.data;
-      login(user, token);
-      navigate("/");
-    } catch (err) {
-      alert(
-        err.response?.data?.message || "Login failed"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await api.post(
+      "/auth/login",
+      formData
+    );
+
+    const { token, user } = res.data;
+
+    login(user, token);
+    navigate("/");
+  } catch (err) {
+    alert(
+      err.response?.data?.message ||
+      "Login failed"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen flex bg-gray-50 dark:bg-slate-950">
