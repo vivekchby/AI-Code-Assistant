@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import DashboardLayout from "../layouts/DashboardLayout";
 import { AuthContext } from "../context/AuthContext";
 import api from "../services/api";
 
@@ -29,8 +28,7 @@ const Profile = () => {
   };
 
   return (
-    <DashboardLayout>
-      <div className="max-w-2xl">
+    <div className="max-w-2xl">
         <h1 className="text-3xl font-bold text-slate-800">Profile settings</h1>
         <p className="mt-2 text-slate-500">Manage your account details and password.</p>
         <form onSubmit={handleSubmit} className="mt-6 space-y-5 rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
@@ -48,8 +46,7 @@ const Profile = () => {
             <button type="button" onClick={() => navigate(-1)} className="rounded-xl border border-slate-200 px-5 py-3 font-semibold text-slate-600">Cancel</button>
           </div>
         </form>
-      </div>
-    </DashboardLayout>
+    </div>
   );
 };
 

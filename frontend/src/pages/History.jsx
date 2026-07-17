@@ -5,7 +5,6 @@ import {
 } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import DashboardLayout from "../layouts/DashboardLayout";
 import api from "../services/api";
 import toast from "react-hot-toast";
 
@@ -72,35 +71,49 @@ const History = () => {
   );
 
   return (
-    <DashboardLayout>
-      <div>
-        <h1 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+    <div>
+      {/* Hero */}
+      <div
+        className="
+          bg-gradient-to-r
+          from-indigo-500
+          to-purple-600
+          rounded-3xl
+          p-6 md:p-8
+          text-white
+          mb-8
+          "
+      >
+        <h1 className="text-4xl font-bold">
           Review History
         </h1>
 
-        <input
-          type="text"
-          placeholder="Search by summary or language..."
-          value={search}
-          onChange={(e) =>
-            setSearch(e.target.value)
-          }
-          className="w-full border rounded p-3 mb-6 bg-white dark:bg-slate-800 dark:border-slate-700"
-        />
+        <p className="mt-3 text-lg opacity-90">
+          Browse and manage your past code reviews.
+        </p>
+      </div>
+
+      <input
+        type="text"
+        placeholder="Search by summary or language..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full border rounded-xl p-3 mb-6 bg-white border-gray-200 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none transition"
+      />
 
         {loading ? (
           <div>
             <p>Loading reviews...</p>
           </div>
         ) : filteredReviews.length === 0 ? (
-          <div className="border rounded p-6 text-center bg-white dark:bg-slate-800 dark:border-slate-700">
+          <div className="border rounded-2xl p-8 text-center bg-white border-gray-200">
             No reviews found.
           </div>
         ) : (
           filteredReviews.map((review) => (
             <div
               key={review.id}
-              className="border rounded p-5 mb-5 shadow bg-white dark:bg-slate-800 dark:border-slate-700"
+              className="border rounded-2xl p-6 mb-5 shadow-sm bg-white border-gray-200"
             >
               <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                 <div>
@@ -133,7 +146,7 @@ const History = () => {
                 <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                   <Link
                     to={`/reviews/${review.id}`}
-                    className="bg-blue-500 text-white px-4 py-2 rounded text-center"
+                    className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-center transition"
                   >
                     View Details
                   </Link>
@@ -144,7 +157,7 @@ const History = () => {
                         review.id
                       )
                     }
-                    className="bg-red-500 text-white px-4 py-2 rounded text-center"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-center transition"
                   >
                     Delete
                   </button>
@@ -153,8 +166,7 @@ const History = () => {
             </div>
           ))
         )}
-      </div>
-    </DashboardLayout>
+    </div>
   );
 };
 

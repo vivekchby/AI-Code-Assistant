@@ -10,6 +10,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Sidebar = ({
   sidebarOpen,
+  onReset,
   setSidebarOpen,
 }) => {
   const { logout } =
@@ -20,6 +21,13 @@ const Sidebar = ({
     logout();
     setSidebarOpen(false);
     navigate("/login", { replace: true });
+  };
+
+  const handleNewReviewClick = () => {
+    if (onReset) {
+      onReset();
+    }
+    setSidebarOpen(false);
   };
 
   return (
@@ -93,10 +101,8 @@ const Sidebar = ({
           </Link>
 
           <Link
-            to="/review"
-            onClick={() =>
-              setSidebarOpen(false)
-            }
+            to="/"
+            onClick={handleNewReviewClick}
             className="flex
               items-center
               gap-3

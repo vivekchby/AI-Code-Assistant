@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import { useLocation } from "react-router-dom";
 
 const DashboardLayout = ({
   children,
@@ -9,6 +10,10 @@ const DashboardLayout = ({
     sidebarOpen,
     setSidebarOpen,
   ] = useState(false);
+  const dashboardRef = useRef(null);
+  const location = useLocation();
+
+  const handleReset = () => dashboardRef.current?.reset();
 
   return (
     <div
@@ -21,6 +26,7 @@ const DashboardLayout = ({
     >
       <Sidebar
         sidebarOpen={sidebarOpen}
+        onReset={handleReset}
         setSidebarOpen={
           setSidebarOpen
         }
@@ -33,11 +39,13 @@ const DashboardLayout = ({
         flex-col
         "
       >
-        <Navbar
-          setSidebarOpen={
-            setSidebarOpen
-          }
-        />
+        {location.pathname !== '/history' && (
+          <Navbar
+            setSidebarOpen={
+              setSidebarOpen
+            }
+          />
+        )}
 
         <main
           className="
@@ -47,7 +55,7 @@ const DashboardLayout = ({
           bg-gray-100
           "
         >
-          {children}
+          {children(dashboardRef)}
         </main>
       </div>
     </div>

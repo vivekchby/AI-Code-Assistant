@@ -13,7 +13,6 @@ import {
   FaInfoCircle,
   FaStar,
 } from "react-icons/fa";
-import DashboardLayout from "../layouts/DashboardLayout";
 import api from "../services/api";
 
 const ReviewDetails = () => {
@@ -48,31 +47,26 @@ const ReviewDetails = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
-        <div className="flex justify-center items-center h-[70vh]">
+      <div className="flex justify-center items-center h-[70vh]">
           <h1 className="text-3xl font-bold">
             Loading...
           </h1>
-        </div>
-      </DashboardLayout>
+      </div>
     );
   }
 
   if (!review) {
     return (
-      <DashboardLayout>
-        <div className="flex justify-center items-center h-[70vh]">
+      <div className="flex justify-center items-center h-[70vh]">
           <h1 className="text-3xl font-bold">
             Review Not Found
           </h1>
-        </div>
-      </DashboardLayout>
+      </div>
     );
   }
 
   return (
-    <DashboardLayout>
-      <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto">
         <Link
           to="/history"
           className="
@@ -225,8 +219,7 @@ const ReviewDetails = () => {
             )}
           </div>
         </div>
-      </div>
-    </DashboardLayout>
+    </div>
   );
 };
 

@@ -1,8 +1,7 @@
-import { useState, useContext, useCallback } from "react";
+import { useState, useContext, useCallback, useImperativeHandle, forwardRef } from "react";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
-import DashboardLayout from "../layouts/DashboardLayout";
 import { AuthContext } from "../context/AuthContext";
 import CodeEditor from "../components/CodeEditor";
 import ReviewResult from "../components/ReviewResult";
@@ -10,7 +9,7 @@ import StatsCard from "../components/StatsCard";
 import api from "../services/api";
 import { detectLanguage, SUPPORTED_LANGUAGES } from "../utils/detectLanguage";
 
-const Dashboard = () => {
+const Dashboard = forwardRef((props, ref) => {
   const { user } = useContext(AuthContext);
 
   const [code, setCode] = useState("");
@@ -26,6 +25,22 @@ const Dashboard = () => {
   const [language, setLanguage] =
     useState("plaintext");
   const [languageDetected, setLanguageDetected] = useState(false);
+
+  const resetState = useCallback(() => {
+    setCode("");
+    setCorrectedCode("");
+    setIssues([]);
+    setComplexity(null);
+    setAiReview("");
+    setScore(0);
+    setLanguage("plaintext");
+    setLanguageDetected(false);
+    toast("Dashboard has been reset.");
+  }, []);
+
+  useImperativeHandle(ref, () => ({
+    reset: resetState,
+  }));
 
   const handleReview = async () => {
     if (!code.trim()) {
@@ -190,7 +205,7 @@ console.log("User ID:", user?.id);
     };
 
   return (
-    <DashboardLayout>
+    <>
       <motion.div
         initial={{
           opacity: 0,
@@ -402,8 +417,8 @@ console.log("User ID:", user?.id);
           />
         )}
       </motion.div>
-    </DashboardLayout>
+    </>
   );
-};
+});
 
 export default Dashboard;
