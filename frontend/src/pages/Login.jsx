@@ -27,7 +27,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/login", formData);
+      const apiUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/auth/login`;
+      const res = await api.post(apiUrl, formData);
       const { token, user } = res.data;
       login(user, token);
       navigate("/");
