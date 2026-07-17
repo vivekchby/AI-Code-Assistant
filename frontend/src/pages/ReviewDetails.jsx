@@ -35,7 +35,7 @@ const ReviewDetails = () => {
   const fetchReview = async () => {
     try {
       const res = await api.get(
-        `/reviews/${id}`
+        `/api/reviews/${id}`
       );
 
       setReview(res.data.review);

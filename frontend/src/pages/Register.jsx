@@ -28,7 +28,7 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const res = await api.post("/auth/register", formData);
+      const res = await api.post("/api/auth/register", formData);
       const { token, user } = res.data;
       login(user, token);
       navigate("/");

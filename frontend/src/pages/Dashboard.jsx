@@ -48,7 +48,7 @@ console.log("User ID:", user?.id);
       setLoading(true);
 
       const res = await api.post(
-        "/reviews/full-review",
+        "/api/reviews/full-review",
         {
           userId: user.id,
           language,
@@ -157,7 +157,7 @@ console.log("User ID:", user?.id);
       try {
         const res =
           await api.post(
-            "/reviews/upload",
+            "/api/reviews/upload",
             formData,
             {
               headers: {
